@@ -4,7 +4,26 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    
 }
+
+body {
+  
+  animation: bg-animation 5s infinite alternate
+}
+
+
+@keyframes bg-animation {
+  0% {
+    background-color: #5eaaa8;
+  }
+
+  100% {
+    background-color: #a3d2ca;
+  }
+}
+
+
 
 a {
   color: inherit;
