@@ -6,6 +6,49 @@ import {
   Button
 } from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.css'
+import {EMOJIS} from '../public/emojis'
+
+function TestComponent() {
+  useEffect(() => {
+    console.log("i am rendered");
+    
+  }, []);
+  return(
+    <></>
+  )
+}
+
+function EmojiButtons(props) {
+  let span = document.createElement('col');
+
+  const emojis = props.emojiArray.map(item => {
+
+    
+
+    return(
+      <div key={item.code}>
+      <Button 
+        className="border p-1 mx-1" 
+        style={{backgroundColor: 'transparent'}}
+        onClick={() => {
+          props.setMessage(props.message + item.code);
+        }}
+      >
+        {span.innerHTML = item.code}
+        
+      </Button>
+      </div>
+    );
+  });
+
+  return(
+    <div className="row justify-content-center">
+    {emojis}
+    </div>
+  );
+
+
+}
 
 
 
@@ -67,9 +110,13 @@ export default function Home() {
       setSocket(() => newSocket);
     }
   };
+
+  
+
   // websocket code
   useEffect(() => {
     connectSocket();
+    
   }, []);
 
   //handle submit of message to be handled by action type taking the form event as an arguement
@@ -77,9 +124,7 @@ export default function Home() {
 
     //prevent the page from reloading on submit
     e.preventDefault();
-    console.log("submitted");
-    console.log(message);
-    console.log(history);
+    
 
     //check to see if you have a socket to use to submit to server, if not alert and return
     if(!socket) {
@@ -96,6 +141,8 @@ export default function Home() {
     //submit message object passing in message and username as object
     socket.emit("message-submitted", { message, username });
 
+    
+
     //empty message value for next value
     setMessage("");
   };
@@ -110,7 +157,7 @@ export default function Home() {
   //iterate through history array and display messages - destructure username and message elements
   const chatterBox = history.map(({ username, message }, i) => 
     (
-      <div key={i} className="my-2">
+      <div key={i} className="mb-3">
         <strong className=" pl-2 pr-1 py-1" style={{backgroundColor: "#a3d2ca", borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px", color: "#5eaaa8"}}>{username}:</strong>
         <span className=" text-white pr-2 pl-1 py-1" style={{backgroundColor: " #5eaaa8", borderTopRightRadius: "10px", borderBottomRightRadius: "10px",}}> {message} </span>
       </div>
@@ -126,6 +173,7 @@ export default function Home() {
           {/*title and favicon */}
           <title>ChatterBox.io</title>
           <link rel="icon" href="/favicon.ico" />
+          <meta charset="UTF-8"></meta>
         </Head>
         <div className="container-fluid">
             <div className="row justify-content-center text-white" style={{ backgroundColor: "#ff8474"}}>
@@ -135,19 +183,20 @@ export default function Home() {
             </div>
         </div>
         {/*display history*/}
-      <div className="container" style={{marginTop: "25%", }}>
+      <div className="container" style={{marginTop: "15%" }}>
         <div className="row justify-content-center">
           
           <div className="col-10 col-md-8 col-lg-6 col-xl-4 rounded pb-2 px-0 pt-4" style={{backgroundColor: "#ffc996"}}>
             <div className="row-fluid">
-              <div className="col bg-white border" style={{minHeight: "100px"}}>
+              <div className="col bg-white border pt-3" id="chatBox" style={{height: "200px", overflowY: "scroll"}}>
                 {chatterBox}
 
               </div>
             </div>
             
             <div className="row pt-3">
-              <form onSubmit={handleSubmit} className="col-8 mx-auto">
+            <form onSubmit={
+              handleSubmit} className=" mx-auto">
                 
                   <label htmlFor="message">
                     
@@ -176,16 +225,22 @@ export default function Home() {
                   >
                     Send
                   </Button>
-                
+                  
                 
               </form>
             </div>
+            <div className="col-12 mx-auto">
+              <EmojiButtons emojiArray={EMOJIS} setMessage={setMessage} message={message}/>
+
+            </div>
+
             
           </div>
         </div>
         
       </div>
       <footer className="text-center text-white" style={{bottom: "10%"}}>ChatterBox.io</footer>
+      <TestComponent />
       </>
     );
   }
@@ -200,10 +255,11 @@ export default function Home() {
           {/*title and favicon */}
           <title>ChatterBox.io</title>
           <link rel="icon" href="/favicon.ico" />
+          <meta charset="UTF-8"></meta>
         </Head>
 
         {/*username component passing in props */}
-        <div style={{marginTop: "40%", backgroundColor: "#ff8474"}} className="pt-2">
+        <div style={{marginTop: "20%", backgroundColor: "#ff8474"}} className="pt-2">
           <UsernameField
             completed={isUsernameConfirmed}
             value={username}
