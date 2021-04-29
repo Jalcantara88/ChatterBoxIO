@@ -115,10 +115,15 @@ export default function Home() {
   };
 
   const goToMessageBottom = () => {
-    document.getElementById("messageList").scrollTo({
-      top: document.getElementById("messageList").scrollHeight,
-      
-      behavior: 'smooth'});
+    if(document.getElementById("messageList")) {
+      document.getElementById("messageList").scrollTo({
+        top: document.getElementById("messageList").scrollHeight,
+        
+        behavior: 'smooth'});
+    }
+    else {
+      return
+    }
   }
 
   
@@ -187,7 +192,7 @@ export default function Home() {
           {/*title and favicon */}
           <title>ChatterBox.io</title>
           <link rel="icon" href="/favicon.ico" />
-          <meta charset="UTF-8"></meta>
+          <meta charSet="UTF-8"></meta>
         </Head>
         <div className="container-fluid">
             <div className="row justify-content-center text-white" style={{ backgroundColor: "#ff8474"}}>
@@ -270,7 +275,7 @@ export default function Home() {
           {/*title and favicon */}
           <title>ChatterBox.io</title>
           <link rel="icon" href="/favicon.ico" />
-          <meta charset="UTF-8"></meta>
+          <meta charSet="UTF-8"></meta>
         </Head>
 
         {/*username component passing in props */}
