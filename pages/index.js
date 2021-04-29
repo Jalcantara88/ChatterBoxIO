@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { io } from 'socket.io-client'
 import UsernameField from '../components/UsernameField'
 import {
@@ -69,6 +69,9 @@ export default function Home() {
   //message: holds current message being dealt with - instantiate to empty string
   const [message, setMessage] = useState("");
 
+  
+
+
   //history: holds all objects submitted and echoed back from server - instantiate to empty array
   const [history, setHistory] = useState([
     //example object of what an object will hold
@@ -111,13 +114,22 @@ export default function Home() {
     }
   };
 
+  const goToMessageBottom = () => {
+    document.getElementById("messageList").scrollTo({
+      top: document.getElementById("messageList").scrollHeight,
+      
+      behavior: 'smooth'});
+  }
+
   
 
   // websocket code
   useEffect(() => {
     connectSocket();
-    
-  }, []);
+    goToMessageBottom();
+  }, [history]);
+
+  
 
   //handle submit of message to be handled by action type taking the form event as an arguement
   const handleSubmit = (e) => {
@@ -152,6 +164,7 @@ export default function Home() {
     setMessage(e.target.value);
     console.log(message);
     console.log(history);
+    //goToMessageBottom();
   }
 
   //iterate through history array and display messages - destructure username and message elements
@@ -164,6 +177,7 @@ export default function Home() {
     )
   )
 
+ 
   
   
   if(isUsernameConfirmed) {
@@ -188,15 +202,16 @@ export default function Home() {
           
           <div className="col-10 col-md-8 col-lg-6 col-xl-4 rounded pb-2 px-0 pt-4" style={{backgroundColor: "#ffc996"}}>
             <div className="row-fluid">
-              <div className="col bg-white border pt-3" id="chatBox" style={{height: "200px", overflowY: "scroll"}}>
+              <div className="col bg-white border pt-3" id="messageList" style={{height: "200px", overflowY: "scroll"}}>
                 {chatterBox}
-
+                <div  id="messageBottom"></div>
               </div>
             </div>
             
             <div className="row pt-3">
-            <form onSubmit={
-              handleSubmit} className=" mx-auto">
+            <form onSubmit={handleSubmit} onChange={() => {
+              
+            }} className=" mx-auto">
                 
                   <label htmlFor="message">
                     
@@ -278,11 +293,6 @@ export default function Home() {
             
           />
         </div>    
-        
-
-        
-
-        
       
         <footer className="text-center text-white" style={{bottom: "10%", backgroundColor: "#ff8474"}}>ChatterBox.io</footer>
     </div>
