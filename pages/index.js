@@ -8,8 +8,6 @@ import {
 import 'bootstrap/dist/css/bootstrap.css'
 import {EMOJIS} from '../public/emojis'
 
-
-
 function EmojiButtons(props) {
   let span = document.createElement('col');
 
@@ -35,11 +33,7 @@ function EmojiButtons(props) {
     {emojis}
     </div>
   );
-
-
 }
-
-
 
 export default function Home() {
   //create hook states
@@ -58,9 +52,6 @@ export default function Home() {
   //message: holds current message being dealt with - instantiate to empty string
   const [message, setMessage] = useState("");
 
-  
-
-
   //history: holds all objects submitted and echoed back from server - instantiate to empty array
   const [history, setHistory] = useState([
     //example object of what an object will hold
@@ -75,10 +66,10 @@ export default function Home() {
   //arrow function that handles a new socket connect
   const connectSocket = () => {
     
-
     if(!socket) {
       //create new socket using socket.io
-      const newSocket = io("https://54.167.252.232:8008");
+      //const newSocket = io("https://54.167.252.232:8008");
+      const newSocket = io("https://chatapps.supergamebros.com:8008");
       //socket.io action types
 
       //confirm connection
@@ -125,15 +116,12 @@ export default function Home() {
     goToMessageBottom();
   }, [history]);
 
-  
-
   //handle submit of message to be handled by action type taking the form event as an arguement
   const handleSubmit = (e) => {
 
     //prevent the page from reloading on submit
     e.preventDefault();
     
-
     //check to see if you have a socket to use to submit to server, if not alert and return
     if(!socket) {
       alert("Chatter Box not connected yet. Please try again.");
@@ -148,8 +136,6 @@ export default function Home() {
 
     //submit message object passing in message and username as object
     socket.emit("message-submitted", { message, username });
-
-    
 
     //empty message value for next value
     setMessage("");
@@ -187,106 +173,104 @@ export default function Home() {
             </div>
         </div>
         {/*display history*/}
-      <div className="container" style={{marginTop: "15%" }}>
-        <div className="row justify-content-center">
-          
-          <div className="col-10 col-md-8 col-lg-6 col-xl-4 rounded pb-2 px-0 pt-4" style={{backgroundColor: "#ffc996"}}>
-            <div className="row-fluid">
-              <div className="col bg-white border pt-3" id="messageList" style={{height: "200px", overflowY: "scroll"}}>
-                {chatterBox}
-                <div  id="messageBottom"></div>
+        <div className="container" style={{marginTop: "15%" }}>
+          <div className="row justify-content-center">
+            
+            <div className="col-10 col-md-8 col-lg-6 col-xl-4 rounded pb-2 px-0 pt-4" style={{backgroundColor: "#ffc996"}}>
+              <div className="row-fluid">
+                <div className="col bg-white border pt-3" id="messageList" style={{height: "200px", overflowY: "scroll"}}>
+                  {chatterBox}
+                  <div  id="messageBottom"></div>
+                </div>
               </div>
-            </div>
-            
-            <div className="row pt-3">
-            <form onSubmit={handleSubmit} onChange={() => {
               
-            }} className=" mx-auto">
+              <div className="row pt-3">
+              <form onSubmit={handleSubmit} onChange={() => {
                 
-                  <label htmlFor="message">
-                    
-                    <input  
-                      type="text"
-                      id="message"
-                      name="message"
-                      value={message}
-                      //fires value change
-                      onChange={handleChange}
-                      placeholder={
-                        //ternary operator to check if username is set yet, if not it asks user to do so
-                        " Chat Here..."
-                      }
-                      //disables input until username is set
-                      disabled={!isUsernameConfirmed}
-                      className="align-middle"
-                      style={{border: 0}}
-                    />
-                  </label>
-                  <Button 
-                    type="submit"  
-                    disabled={!isUsernameConfirmed}
-                    className="px-3 "
-                    style={{padding: "1px",  backgroundColor: "#ff8474", border: 0, borderRadius: 0}}
-                  >
-                    Send
-                  </Button>
+              }} className=" mx-auto">
                   
-                
-              </form>
-            </div>
-            <div className="col-12 mx-auto">
-              <EmojiButtons emojiArray={EMOJIS} setMessage={setMessage} message={message}/>
+                    <label htmlFor="message">
+                      
+                      <input  
+                        type="text"
+                        id="message"
+                        name="message"
+                        value={message}
+                        //fires value change
+                        onChange={handleChange}
+                        placeholder={
+                          //ternary operator to check if username is set yet, if not it asks user to do so
+                          " Chat Here..."
+                        }
+                        //disables input until username is set
+                        disabled={!isUsernameConfirmed}
+                        className="align-middle"
+                        style={{border: 0}}
+                      />
+                    </label>
+                    <Button 
+                      type="submit"  
+                      disabled={!isUsernameConfirmed}
+                      className="px-3 "
+                      style={{padding: "1px",  backgroundColor: "#ff8474", border: 0, borderRadius: 0}}
+                    >
+                      Send
+                    </Button>
+                    
+                  
+                </form>
+              </div>
+              <div className="col-12 mx-auto">
+                <EmojiButtons emojiArray={EMOJIS} setMessage={setMessage} message={message}/>
 
-            </div>
+              </div>
 
-            
+              
+            </div>
           </div>
+          
         </div>
-        
-      </div>
-      <footer className="text-center text-white" style={{bottom: "10%"}}>ChatterBox.io</footer>
-      
+        <footer className="text-center text-white" style={{bottom: "10%"}}>ChatterBox.io</footer>
       </>
     );
   }
 
   else {
 
-  return(
-    //html display for Chatter Box app
-    <div>
-      
-        <Head>
-          {/*title and favicon */}
-          <title>ChatterBox.io</title>
-          <link rel="icon" href="/favicon.ico" />
-          <meta charSet="UTF-8"></meta>
-        </Head>
+    return(
+      //html display for Chatter Box app
+      <div>
+        
+          <Head>
+            {/*title and favicon */}
+            <title>ChatterBox.io</title>
+            <link rel="icon" href="/favicon.ico" />
+            <meta charSet="UTF-8"></meta>
+          </Head>
 
-        {/*username component passing in props */}
-        <div style={{marginTop: "20%", backgroundColor: "#ff8474"}} className="pt-2">
-          <UsernameField
-            completed={isUsernameConfirmed}
-            value={username}
-            roomName={roomName}
-            onChange={(value) => {setUsername(value); console.log(username);}}
-            onRoomChange={(value) => {setRoomName(value); console.log(roomName);}}
-            onSubmit={() => 
-              {
-                if(username === "") {
-                  alert("please set a username to chat")
-              }
-              else {
-                setUsernameConfirmed(true)
-              }
-            }}
-            
-          />
-        </div>    
-      
-        <footer className="text-center text-white" style={{bottom: "10%", backgroundColor: "#ff8474"}}>ChatterBox.io</footer>
-    </div>
-  );
+          {/*username component passing in props */}
+          <div style={{marginTop: "20%", backgroundColor: "#ff8474"}} className="pt-2">
+            <UsernameField
+              completed={isUsernameConfirmed}
+              value={username}
+              roomName={roomName}
+              onChange={(value) => {setUsername(value); console.log(username);}}
+              onRoomChange={(value) => {setRoomName(value); console.log(roomName);}}
+              onSubmit={() => 
+                {
+                  if(username === "") {
+                    alert("please set a username to chat")
+                }
+                else {
+                  setUsernameConfirmed(true)
+                }
+              }}
+            />
+          </div>    
+        
+          <footer className="text-center text-white" style={{bottom: "10%", backgroundColor: "#ff8474"}}>ChatterBox.io</footer>
+      </div>
+    );
   }
 }
 

@@ -9,8 +9,6 @@ const ioHandler = (req, res) => {
         //create new server
         const io = new Server(res.socket.server);
 
-        
-
         io.on("connection", (socket) => {
             //when message is submitted, broadcast it
 
@@ -36,9 +34,6 @@ const ioHandler = (req, res) => {
                 
             });*/
         });
-
-        
-        
 
         // make that socket available externally
         res.socket.server.io = io;
