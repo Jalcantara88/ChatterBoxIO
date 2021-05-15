@@ -8,23 +8,12 @@ import {
 import 'bootstrap/dist/css/bootstrap.css'
 import {EMOJIS} from '../public/emojis'
 
-function TestComponent() {
-  useEffect(() => {
-    console.log("i am rendered");
-    
-  }, []);
-  return(
-    <></>
-  )
-}
+
 
 function EmojiButtons(props) {
   let span = document.createElement('col');
 
   const emojis = props.emojiArray.map(item => {
-
-    
-
     return(
       <div key={item.code}>
       <Button 
@@ -85,12 +74,11 @@ export default function Home() {
 
   //arrow function that handles a new socket connect
   const connectSocket = () => {
-    //prime socket
-    //fetch("http://54.167.252.232:8008");
+    
 
     if(!socket) {
       //create new socket using socket.io
-      const newSocket = io("http://54.167.252.232:8008");
+      const newSocket = io("https://54.167.252.232:8008");
       //socket.io action types
 
       //confirm connection
@@ -126,11 +114,14 @@ export default function Home() {
     }
   }
 
+  useEffect(() => {
+    connectSocket();
+  }, []);
   
 
   // websocket code
   useEffect(() => {
-    connectSocket();
+    
     goToMessageBottom();
   }, [history]);
 
@@ -169,7 +160,6 @@ export default function Home() {
     setMessage(e.target.value);
     console.log(message);
     console.log(history);
-    //goToMessageBottom();
   }
 
   //iterate through history array and display messages - destructure username and message elements
@@ -182,9 +172,6 @@ export default function Home() {
     )
   )
 
- 
-  
-  
   if(isUsernameConfirmed) {
     return(
       <>
@@ -196,9 +183,7 @@ export default function Home() {
         </Head>
         <div className="container-fluid">
             <div className="row justify-content-center text-white" style={{ backgroundColor: "#ff8474"}}>
-                
                   <p className="m-0"> Chatting as <strong>{username}</strong> </p>
-                
             </div>
         </div>
         {/*display history*/}
@@ -260,7 +245,7 @@ export default function Home() {
         
       </div>
       <footer className="text-center text-white" style={{bottom: "10%"}}>ChatterBox.io</footer>
-      <TestComponent />
+      
       </>
     );
   }
