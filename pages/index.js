@@ -69,7 +69,9 @@ export default function Home() {
     if(!socket) {
       //create new socket using socket.io
       //const newSocket = io("https://54.167.252.232:8008");
-      const newSocket = io("https://chatapps.supergamebros.com:8008");
+      //const newSocket = io("https://chatapps.supergamebros.com:8008");
+      const newSocket = io("https://safe-cliffs-51559.herokuapp.com:8008");
+      
       //socket.io action types
 
       //confirm connection
