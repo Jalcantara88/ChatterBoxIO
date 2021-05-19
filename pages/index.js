@@ -7,37 +7,9 @@ import {
 } from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 import {EMOJIS} from '../public/emojis'
+import EmojiButtons from '../components/EmojiButtons'
 
 
-
-
-function EmojiButtons(props) {
-  let span = document.createElement('col');
-
-  const emojis = props.emojiArray.map(item => {
-    return(
-      <div key={item.code}>
-       
-      <Button 
-        className="border p-1 mx-1" 
-        style={{backgroundColor: 'transparent'}}
-        onClick={() => {
-          props.setMessage(props.message + item.code);
-        }}
-      >
-        {span.innerHTML = item.code}
-        
-      </Button>
-      </div>
-    );
-  });
-
-  return(
-    <div className="row justify-content-center">
-    {emojis}
-    </div>
-  );
-}
 
 export default function Home() {
   //create hook states
@@ -67,6 +39,9 @@ export default function Home() {
     */
   ]);
 
+  const [allUsers, setAllUsers] = useState([]);
+  
+
   //arrow function that handles a new socket connect
   const connectSocket = () => {
     
@@ -83,8 +58,14 @@ export default function Home() {
 
       //confirm connection
       newSocket.on("connect", () => {
+        newSocket.emit("user-joined", username);
         //newSocket.emit("room", roomName);
         console.log("Chatter Box Connected");
+      });
+
+      newSocket.on("all-users-update", (usersArray) => {
+        setAllUsers(usersArray);
+        console.log(allUsers);
       });
 
       //handles message submit taking the message object as an argument in the second parameter
