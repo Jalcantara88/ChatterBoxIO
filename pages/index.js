@@ -65,7 +65,8 @@ export default function Home() {
 
       newSocket.on("all-users-update", (usersArray) => {
         console.log("incoming usersArray: " + usersArray);
-        setAllUsers(usersArray);
+        let newUserArray = usersArray;
+        setAllUsers(newUsersArray);
         console.log("new all users: " + allUsers);
       });
 
@@ -222,6 +223,8 @@ export default function Home() {
           
         </div>
         <footer className="text-center text-white" style={{bottom: "10%"}}>ChatterBox.io</footer>
+
+        <div className="rounded bg-danger text-white">{allUsers}</div>
       </>
     );
   }
@@ -262,7 +265,7 @@ export default function Home() {
       
         <footer className="text-center text-white" style={{bottom: "10%", backgroundColor: "#ff8474"}}>ChatterBox.io</footer>
 
-        <div className="rounded bg-danger">{allUsers}</div>
+        
 
         <div className=" col-12 col-md-10 col-lg-6 rounded bg-white p-5 mx-auto mt-5">
           <h3 className="text-center text-dark">About This Project</h3>
