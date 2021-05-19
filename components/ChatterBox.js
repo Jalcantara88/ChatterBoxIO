@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { useEffect, useState, useRef, } from 'react';
 import { io } from 'socket.io-client';
-import UsernameField from '../components/UsernameField';
 import {
   Button
 } from 'reactstrap';
@@ -96,12 +95,13 @@ export default function ChatterBox(props) {
   }
 
  
-    socket.emit("user-joined", username);
+    
   
 
   //on mount connect your socket
   useEffect(() => {
     connectSocket();
+    socket.emit("user-joined", username);
   }, []);
   
 
@@ -198,7 +198,7 @@ export default function ChatterBox(props) {
                           " Chat Here..."
                         }
                         //disables input until username is set
-                        disabled={!isUsernameConfirmed}
+                        //disabled={!isUsernameConfirmed}
                         className="align-middle"
                         style={{border: 0}}
                       />
@@ -206,7 +206,7 @@ export default function ChatterBox(props) {
 
                     <Button 
                       type="submit"  
-                      disabled={!isUsernameConfirmed}
+                      //disabled={!isUsernameConfirmed}
                       className="px-3 "
                       style={{padding: "1px",  backgroundColor: "#ff8474", border: 0, borderRadius: 0}}
                     >

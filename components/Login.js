@@ -1,3 +1,7 @@
+import UsernameField from '../components/UsernameField';
+import Head from 'next/head';
+
+
 export default function Login(props) {
     return(
         //html display for Chatter Box app
@@ -15,12 +19,12 @@ export default function Login(props) {
             <UsernameField
               completed={props.isUsernameConfirmed}
               value={props.username}
-              roomName={roomName}
-              onChange={(value) => {props.setUsername(value); console.log(username);}}
+              //roomName={roomName}
+              onChange={(value) => {props.setUsername(value); console.log(props.username);}}
               //onRoomChange={(value) => {setRoomName(value); console.log(roomName);}}
               onSubmit={() => 
                 {
-                  if(username === "") {
+                  if(props.username === "") {
                     alert("please set a username to chat");
                 }
                 else {
