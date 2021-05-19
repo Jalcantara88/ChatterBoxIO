@@ -101,7 +101,7 @@ export default function ChatterBox(props) {
   //on mount connect your socket
   useEffect(() => {
     connectSocket();
-    socket.emit("user-joined", username);
+    //socket.emit("user-joined", username);
   }, []);
   
 
