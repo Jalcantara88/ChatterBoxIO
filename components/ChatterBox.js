@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, } from 'react';
 import { io } from 'socket.io-client';
 import UsernameField from '../components/UsernameField';
 import {
@@ -95,9 +95,9 @@ export default function ChatterBox(props) {
     }
   }
 
-  componentDidMount() {
+ 
     socket.emit("user-joined", username);
-  }
+  
 
   //on mount connect your socket
   useEffect(() => {
