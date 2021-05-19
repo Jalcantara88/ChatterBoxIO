@@ -53,7 +53,7 @@ export default function ChatterBox(props) {
 
       //confirm connection
       newSocket.on("connect", () => {
-        
+        newSocket.emit("user-joined", username);
         //newSocket.emit("room", roomName);
         console.log("Chatter Box Connected");
       });
@@ -124,7 +124,7 @@ export default function ChatterBox(props) {
     }
 
     //prevent submitting empty object
-    if(!message || !isUsernameConfirmed) {
+    if(!message) {
       console.log("empty");
       return;
     }
