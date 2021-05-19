@@ -1,6 +1,6 @@
 import {
   Button
-} from 'reactstrap'
+} from 'reactstrap';
 
 function EmojiButtons(props) {
     let span = document.createElement('col');

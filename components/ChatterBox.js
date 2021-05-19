@@ -1,15 +1,15 @@
-import Head from 'next/head'
-import { useEffect, useState, useRef } from 'react'
-import { io } from 'socket.io-client'
-import UsernameField from '../components/UsernameField'
+import Head from 'next/head';
+import { useEffect, useState, useRef } from 'react';
+import { io } from 'socket.io-client';
+import UsernameField from '../components/UsernameField';
 import {
   Button
-} from 'reactstrap'
-import 'bootstrap/dist/css/bootstrap.css'
-import {EMOJIS} from '../public/emojis'
-import EmojiButtons from '../components/EmojiButtons'
+} from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import {EMOJIS} from '../public/emojis';
+import EmojiButtons from '../components/EmojiButtons';
 
-export default ChatterBox(props) {
+export default function ChatterBox(props) {
 
     //create hook states
   

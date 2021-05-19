@@ -1,6 +1,6 @@
 import {
     Button
-  } from 'reactstrap'
+  } from 'reactstrap';
 
 const UsernameField = ({ value, onChange, onSubmit, completed, roomName, onRoomChange }) => {
     
