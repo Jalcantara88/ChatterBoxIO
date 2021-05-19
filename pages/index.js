@@ -58,7 +58,7 @@ export default function Home() {
 
       //confirm connection
       newSocket.on("connect", () => {
-        newSocket.emit("user-joined", username);
+        
         //newSocket.emit("room", roomName);
         console.log("Chatter Box Connected");
       });
@@ -253,6 +253,7 @@ export default function Home() {
               }
               else {
                 setUsernameConfirmed(true)
+                socket.emit("user-joined", username);
               }
             }}
           />
