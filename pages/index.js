@@ -64,8 +64,9 @@ export default function Home() {
       });
 
       newSocket.on("all-users-update", (usersArray) => {
+        console.log("incoming usersArray: " + usersArray);
         setAllUsers(usersArray);
-        console.log(allUsers);
+        console.log("new all users: " + allUsers);
       });
 
       //handles message submit taking the message object as an argument in the second parameter
