@@ -8,12 +8,16 @@ import {
 import 'bootstrap/dist/css/bootstrap.css'
 import {EMOJIS} from '../public/emojis'
 
+
+
+
 function EmojiButtons(props) {
   let span = document.createElement('col');
 
   const emojis = props.emojiArray.map(item => {
     return(
       <div key={item.code}>
+       
       <Button 
         className="border p-1 mx-1" 
         style={{backgroundColor: 'transparent'}}
@@ -68,8 +72,11 @@ export default function Home() {
     
     if(!socket) {
       //create new socket using socket.io
-      //const newSocket = io("https://54.167.252.232:8008");
-      //const newSocket = io("https://chatapps.supergamebros.com:8008");
+
+      //const newSocket = io("https://safe-cliffs-51559.herokuapp.com:8008");
+      //https://chatter-box-io.herokuapp.com
+      //https://proxy-cors-anywhere.herokuapp.com/
+      //54.167.252.232
       const newSocket = io("https://safe-cliffs-51559.herokuapp.com:8008");
       
       //socket.io action types
@@ -243,34 +250,39 @@ export default function Home() {
       //html display for Chatter Box app
       <div>
         
-          <Head>
-            {/*title and favicon */}
-            <title>ChatterBox.io</title>
-            <link rel="icon" href="/favicon.ico" />
-            <meta charSet="UTF-8"></meta>
-          </Head>
+        <Head>
+          {/*title and favicon */}
+          <title>ChatterBox.io</title>
+          <link rel="icon" href="/favicon.ico" />
+          <meta charSet="UTF-8"></meta>
+        </Head>
 
-          {/*username component passing in props */}
-          <div style={{marginTop: "20%", backgroundColor: "#ff8474"}} className="pt-2">
-            <UsernameField
-              completed={isUsernameConfirmed}
-              value={username}
-              roomName={roomName}
-              onChange={(value) => {setUsername(value); console.log(username);}}
-              onRoomChange={(value) => {setRoomName(value); console.log(roomName);}}
-              onSubmit={() => 
-                {
-                  if(username === "") {
-                    alert("please set a username to chat")
-                }
-                else {
-                  setUsernameConfirmed(true)
-                }
-              }}
-            />
-          </div>    
-        
-          <footer className="text-center text-white" style={{bottom: "10%", backgroundColor: "#ff8474"}}>ChatterBox.io</footer>
+        {/*username component passing in props */}
+        <div style={{marginTop: "20%", backgroundColor: "#ff8474"}} className="pt-2">
+          <UsernameField
+            completed={isUsernameConfirmed}
+            value={username}
+            roomName={roomName}
+            onChange={(value) => {setUsername(value); console.log(username);}}
+            onRoomChange={(value) => {setRoomName(value); console.log(roomName);}}
+            onSubmit={() => 
+              {
+                if(username === "") {
+                  alert("please set a username to chat")
+              }
+              else {
+                setUsernameConfirmed(true)
+              }
+            }}
+          />
+        </div>    
+      
+        <footer className="text-center text-white" style={{bottom: "10%", backgroundColor: "#ff8474"}}>ChatterBox.io</footer>
+
+        <div className=" col-12 col-md-10 col-lg-6 rounded bg-white p-5 mx-auto mt-5">
+          <h3 className="text-center text-dark">About This Project</h3>
+          <p>This was a project built for a Mintbean Hackathon</p>
+        </div>
       </div>
     );
   }
