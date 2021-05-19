@@ -65,7 +65,7 @@ export default function Home() {
 
       newSocket.on("all-users-update", (usersArray) => {
         console.log("incoming usersArray: " + usersArray);
-        let newUserArray = usersArray;
+        let newUsersArray = usersArray;
         setAllUsers(newUsersArray);
         console.log("new all users: " + allUsers);
       });
