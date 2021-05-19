@@ -77,7 +77,7 @@ export default function Home() {
       //https://chatter-box-io.herokuapp.com
       //https://proxy-cors-anywhere.herokuapp.com/
       //54.167.252.232
-      const newSocket = io("https://safe-cliffs-51559.herokuapp.com");
+      const newSocket = io("https://chatter-box-io.herokuapp.com/");
       
       //socket.io action types
 
