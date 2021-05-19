@@ -265,11 +265,39 @@ export default function Home() {
       
         <footer className="text-center text-white" style={{bottom: "10%", backgroundColor: "#ff8474"}}>ChatterBox.io</footer>
 
+        <div className=" col-12 col-md-10 col-lg-6 rounded bg-white p-5 mx-auto mt-5">
+          <h3 className="text-center text-dark">Welcome to Chatter Box IO</h3>
+          <p className="text-center text-dark">
+            Set your username and connect to Create or Join available Rooms
+            <br/>
+            Chat with other users, share ideas, or just observe.
+            <br/>
+            <br/>
+            All are welcome!
+          </p>
+        </div>
         
 
         <div className=" col-12 col-md-10 col-lg-6 rounded bg-white p-5 mx-auto mt-5">
           <h3 className="text-center text-dark">About This Project</h3>
-          <p>This was a project built for a Mintbean Hackathon</p>
+          <p>
+            This was a project built for a Mintbean Hackathon: Create A Chat App
+            <br/>
+            <br/>
+            <strong>Challenge</strong>
+            Make a Chat Room app using React Next, Express and Socket.IO. Deploy to live site.
+            <br/>
+            <br/>
+            <strong>My Hurdles</strong>
+            I have never worked with Socket.IO, Express, or set up a server to handle api requests. So for me, this was a very difficult challenge.
+            I came accross issues mostly in getting my server hosted on heroku to accept incoming connections. Everything worked locally but not in deployment.
+            Figuring out how to make my own custom emoji buttons and figuring out how to constantly scroll the chat window down everytime a new message is sent was
+            also a little tricky to understand.
+            <br/>
+            <br/>
+
+          
+          </p>
         </div>
       </div>
     );
