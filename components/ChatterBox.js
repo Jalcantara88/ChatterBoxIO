@@ -98,7 +98,7 @@ export default function ChatterBox(props) {
   const renderedUsers = allUsers.map(user => {
       return(
         <div className="col rounded bg-dark text-white">
-            {user.username}
+            {user}
         </div>
       );
   })
