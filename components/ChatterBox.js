@@ -95,7 +95,13 @@ export default function ChatterBox(props) {
     }
   }
 
- 
+  const renderedUsers = allUsers.map(user => {
+      return(
+        <div className="col rounded bg-dark text-white">
+            {user}
+        </div>
+      );
+  })
     
   
 
@@ -230,7 +236,11 @@ export default function ChatterBox(props) {
 
         <footer className="text-center text-white" style={{bottom: "10%"}}>ChatterBox.io</footer>
 
-        <div className="rounded bg-danger text-white">{allUsers}</div>
+        <div className="row">
+            <div className="col-10 col-lg-6">
+                {renderedUsers}
+            </div>    
+        </div>
       </>
     );
   
