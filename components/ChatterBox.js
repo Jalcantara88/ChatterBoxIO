@@ -73,6 +73,7 @@ export default function ChatterBox(props) {
 
       //handles server disconnect by logging it to console
       newSocket.on("disconnect", () => {
+          newSocket.emit("user-left", username);
         console.warn("WARNING: chat app disconnected");
       });
 
