@@ -52,10 +52,10 @@ export default function ChatterBox(props) {
       //socket.io action types
 
       //confirm connection
-      newSocket.on("connect", (socket) => {
+      newSocket.on("connect", () => {
         newSocket.emit("user-joined", username);
         //newSocket.emit("room", roomName);
-        console.log(socket);
+        //console.log(socket);
         console.log("Chatter Box Connected");
       });
 
@@ -82,6 +82,7 @@ export default function ChatterBox(props) {
       setSocket(() => newSocket);
     }
   };
+  console.log("you are connected to socket: " + socket);
 
   //function that scrolls down to bottom of scrollview
   const goToMessageBottom = () => {
