@@ -55,11 +55,15 @@ export default function ChatterBox(props) {
       newSocket.on("connect", () => {
         //const sessionID = newSocket.socket.sessionid;
         //console.log("sessionId is : " + sessionID);
-        console.log("socket id is: " + socket.id);
+        
         newSocket.emit("user-joined", username);
         //newSocket.emit("room", roomName);
         //console.log(socket);
         console.log("Chatter Box Connected");
+      });
+
+      newSocket.on("socket-id", (id) => {
+        console.log("socket id is: " + id);
       });
 
       newSocket.on("all-users-update", (usersArray) => {
