@@ -55,6 +55,7 @@ export default function ChatterBox(props) {
       newSocket.on("connect", () => {
         newSocket.emit("user-joined", username);
         //newSocket.emit("room", roomName);
+        console.log(socket);
         console.log("Chatter Box Connected");
       });
 
