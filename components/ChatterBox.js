@@ -53,6 +53,8 @@ export default function ChatterBox(props) {
 
       //confirm connection
       newSocket.on("connect", () => {
+        const sessionID = newSocket.socket.sessionid;
+        console.log("sessionId is : " + sessionID);
         newSocket.emit("user-joined", username);
         //newSocket.emit("room", roomName);
         //console.log(socket);
