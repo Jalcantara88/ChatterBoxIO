@@ -52,7 +52,7 @@ export default function ChatterBox(props) {
       //socket.io action types
 
       //confirm connection
-      newSocket.on("connect", () => {
+      newSocket.on("connect", (socket) => {
         newSocket.emit("user-joined", username);
         //newSocket.emit("room", roomName);
         console.log(socket);
@@ -63,7 +63,7 @@ export default function ChatterBox(props) {
         console.log("incoming usersArray: " + usersArray);
         let newUsersArray = usersArray;
         setAllUsers(newUsersArray);
-        console.log("new all users: " + allUsers);
+        //console.log("new all users: " + allUsers);
       });
 
       //handles message submit taking the message object as an argument in the second parameter
