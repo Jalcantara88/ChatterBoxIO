@@ -53,8 +53,9 @@ export default function ChatterBox(props) {
 
       //confirm connection
       newSocket.on("connect", () => {
-        const sessionID = newSocket.socket.sessionid;
-        console.log("sessionId is : " + sessionID);
+        //const sessionID = newSocket.socket.sessionid;
+        //console.log("sessionId is : " + sessionID);
+        console.log("socket id is: " + socket.id);
         newSocket.emit("user-joined", username);
         //newSocket.emit("room", roomName);
         //console.log(socket);
@@ -112,7 +113,7 @@ export default function ChatterBox(props) {
   //on mount connect your socket
   useEffect(() => {
     connectSocket();
-    console.log("you are connected to socket: " + socket);
+    //console.log("you are connected to socket: " + socket);
     //socket.emit("user-joined", username);
   }, []);
   
