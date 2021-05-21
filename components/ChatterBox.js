@@ -82,7 +82,7 @@ export default function ChatterBox(props) {
       setSocket(() => newSocket);
     }
   };
-  console.log("you are connected to socket: " + socket);
+  
 
   //function that scrolls down to bottom of scrollview
   const goToMessageBottom = () => {
@@ -110,6 +110,7 @@ export default function ChatterBox(props) {
   //on mount connect your socket
   useEffect(() => {
     connectSocket();
+    console.log("you are connected to socket: " + socket);
     //socket.emit("user-joined", username);
   }, []);
   
