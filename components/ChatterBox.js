@@ -173,11 +173,29 @@ export default function ChatterBox(props) {
         if(!roomSelected) {
             return(
                 <>
-                    <Button
-                        onClick={() => {
-                            setRoomSelected(true);
-                        }}
-                    >select room</Button>
+                    <Head>
+                        {/*title and favicon */}
+                        <title>ChatterBox.io</title>
+                        <link rel="icon" href="/favicon.ico" />
+                        <meta charSet="UTF-8"></meta>
+                    </Head>
+                    <div className="container-fluid">
+                        <div className="row justify-content-center text-white" style={{ backgroundColor: "#ff8474"}}>
+                                <p className="m-0"> Chatting as <strong>{username}</strong> </p>
+                        </div>
+                        <div className="row justify-content-center">
+                            <Button
+                                onClick={() => {
+                                    setRoomSelected(true);
+                                }}
+                            >select room</Button>
+                        </div>
+                        <div className="row justify-content-center">
+                            # of users connected: {allUsers.length}
+                        </div>
+                    </div>
+
+                    
                 </>
             );
         }
