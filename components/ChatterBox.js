@@ -19,7 +19,7 @@ export default function ChatterBox(props) {
   //username: holds the username as a string - instantiate as empty string
    const username = props.username; 
 
-   const [roomSelected, setRoomSelected] = useSate(false);
+   const [roomSelected, setRoomSelected] = useState(false);
 
    const [roomName, setRoomName] = useState("");
 
