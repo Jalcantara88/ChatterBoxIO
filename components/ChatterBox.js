@@ -15,34 +15,10 @@ export default function ChatterBox(props) {
   //socket: holds socket value - instantiate to null value
   const [socket, setSocket] = useState(null);
 
-  const [roomSelected, setRoomSelected] = useState(false);
-
-  const [room, setRoom] = useState("");
-
-  const [allRooms, setAllRooms] = useState([
-    /*
-    {
-        name: "some room",
-        users: [
-            {
-                username: "",
-                socketId: ""
-            }
-        ],
-        allMessages: [
-            {
-                username: "john doe",
-                message: ""
-            } 
-        ]
-    }
-    */
-  ]);
 
   //username: holds the username as a string - instantiate as empty string
    const username = props.username; 
 
-   const [socketId, setSocketId] = useState("");
 
   //message: holds current message being dealt with - instantiate to empty string
   const [message, setMessage] = useState("");
@@ -72,14 +48,14 @@ export default function ChatterBox(props) {
       //confirm connection
       newSocket.on("connect", () => {
         //const sessionID = newSocket.socket.sessionid;
-        //console.log("sessionId is : " + sessionID);
-        
-        newSocket.emit("user-joined", username);
-        //newSocket.emit("room", roomName);
-        console.log(newSocket);
+
+        //newSocket.emit("get-all-rooms");
+        //newSocket.emit("user-joined", username);
+
+        //console.log(newSocket);
+        //setSocketId(newSocket.id);
         console.log("Chatter Box Connected");
       });
-
 
       newSocket.on("all-users-update", (usersArray) => {
         console.log("incoming usersArray: " + usersArray);
@@ -126,8 +102,9 @@ export default function ChatterBox(props) {
             {user}
         </div>
       );
-  })
-    
+  });
+
+
   
 
   //on mount connect your socket
@@ -169,25 +146,14 @@ export default function ChatterBox(props) {
     setMessage("");
   };
 
-  const handleCreateRoom = (e) => {
-      e.preventDefault();
-      console.log("room " + room + " created");
 
-      socket.emit("room-created", room);
-      socket.join(room);
-  }
-
-  const handleRoomChange = (e) => {
-      setRoom(e.target.value);
-      
-  }
 
   //handle onchange for form submit - sets current message string to value of input box
   const handleChange = (e) => {
     setMessage(e.target.value);
     console.log(message);
     console.log(history);
-  }
+  };
 
   //iterate through history array and display messages - destructure username and message elements
   const chatterBox = history.map(({ username, message }, i) => 
@@ -197,68 +163,9 @@ export default function ChatterBox(props) {
         <span className=" text-white pr-2 pl-1 py-1" style={{backgroundColor: " #5eaaa8", borderTopRightRadius: "10px", borderBottomRightRadius: "10px",}}> {message} </span>
       </div>
     )
-  )
-
-        if(!roomSelected) {
-            return(
-                <>
-                    <Head>
-                        {/*title and favicon */}
-                        <title>ChatterBox.io</title>
-                        <link rel="icon" href="/favicon.ico" />
-                        <meta charSet="UTF-8"></meta>
-                    </Head>
-                    <div className="container">
-                        <div className="row justify-content-center">
-                            <h3>Select A Room</h3>
-
-                        </div>
-
-                        <div className="row justify-content-center">
-                            {roomButtons}
-                        </div>
-
-                        <div className="row justify-content-center">
-                            Create a room:
-                            <form onSubmit={handleCreateRoom} onChange={() => {
-                          
-                            }} className=" mx-auto">
-                            
-                              <label htmlFor="roomName">
-                                
-                                <input  
-                                  type="text"
-                                  id="roomName"
-                                  name="roomName"
-                                  value={room}
-                                  //fires value change
-                                  onChange={handleRoomChange}
-                                  placeholder="room name here"
-                                  //disables input until username is set
-                                  //disabled={!isUsernameConfirmed}
-                                  className="align-middle"
-                                  style={{border: 0}}
-                                />
-                              </label>
-          
-                              <Button 
-                                type="submit"  
-                                //disabled={!isUsernameConfirmed}
-                                className="px-3 "
-                                style={{padding: "1px",  backgroundColor: "#ff8474", border: 0, borderRadius: 0}}
-                              >
-                                Create
-                              </Button>
-                              
-                          </form>
-                        </div>
-                    </div>
-                </>
-            );
-        }
+  );
 
  
-        else {
 
             return(
                 <>
@@ -280,15 +187,13 @@ export default function ChatterBox(props) {
                       <div className="col-10 col-md-8 col-lg-6 col-xl-4 rounded pb-2 px-0 pt-4" style={{backgroundColor: "#ffc996"}}>
                         <div className="row justify-content-center">
                             <div className="col-4">
-                                {room}
+                                
                             </div>
                             <div className="col-4">
                                 <Button onClick={() => {
-                                    setRoomSelected(false);
-                                    setRoom("");
-                                    socket.join(room)
+                                     
                                 }}>
-                                    Leave Room
+                                    Leave
                                 </Button>
                             </div>
                         </div>
@@ -357,8 +262,5 @@ export default function ChatterBox(props) {
                   </div>
                 </>
               );
-        }
-    
-  
 
 }
