@@ -50,7 +50,7 @@ export default function ChatterBox(props) {
         //const sessionID = newSocket.socket.sessionid;
 
         //newSocket.emit("get-all-rooms");
-        //newSocket.emit("user-joined", username);
+        newSocket.emit("user-joined", username);
 
         //console.log(newSocket);
         //setSocketId(newSocket.id);
