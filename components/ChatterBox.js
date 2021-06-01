@@ -150,6 +150,9 @@ export default function ChatterBox(props) {
     setMessage("");
   };
 
+  const handleRoomSubmit = (e) => {
+    setRoomSelected(true);
+  }
 
 
   //handle onchange for form submit - sets current message string to value of input box
@@ -157,6 +160,10 @@ export default function ChatterBox(props) {
     setMessage(e.target.value);
     console.log(message);
     console.log(history);
+  };
+
+  const handleRoomChange = (e) => {
+      setRoomName(e.target.value);
   };
 
   //iterate through history array and display messages - destructure username and message elements
@@ -184,9 +191,7 @@ export default function ChatterBox(props) {
                                 <p className="m-0"> Chatting as <strong>{username}</strong> </p>
                         </div>
                         <div className="row justify-content-center my-5">
-                            <form onSubmit={handleRoomSubmit} onChange={() => {
-                            
-                            }} className=" mx-auto">
+                            <form onSubmit={handleRoomSubmit} className=" mx-auto">
                                 
                                 <label htmlFor="message">
                                     <input  
@@ -205,7 +210,7 @@ export default function ChatterBox(props) {
                                 </label>
                                 <Button
                                     onClick={() => {
-                                        setRoomSelected(true);
+                                        
                                     }}
                                 >
                                     create room
