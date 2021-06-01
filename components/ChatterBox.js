@@ -180,9 +180,9 @@ export default function ChatterBox(props) {
                     >select room</Button>
                 </>
             );
-        };
+        }
 
-        else {
+        else{
 
             return(
                 <>
@@ -280,6 +280,6 @@ export default function ChatterBox(props) {
                 </>
               );
 
-        };
+        }
 
 }
