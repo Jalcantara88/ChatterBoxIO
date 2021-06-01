@@ -183,19 +183,42 @@ export default function ChatterBox(props) {
                         <div className="row justify-content-center text-white" style={{ backgroundColor: "#ff8474"}}>
                                 <p className="m-0"> Chatting as <strong>{username}</strong> </p>
                         </div>
-                        <div className="row justify-content-center">
-                            <Button
-                                onClick={() => {
-                                    setRoomSelected(true);
-                                }}
-                            >select room</Button>
+                        <div className="row justify-content-center my-5">
+                            <form onSubmit={handleRoomSubmit} onChange={() => {
+                            
+                            }} className=" mx-auto">
+                                
+                                <label htmlFor="message">
+                                    <input  
+                                    type="text"
+                                    id="roomName"
+                                    name="roomName"
+                                    value={roomName}
+                                    //fires value change
+                                    onChange={handleRoomChange}
+                                    placeholder="room name here"
+                                    //disables input until username is set
+                                    //disabled={!isUsernameConfirmed}
+                                    className="align-middle"
+                                    style={{border: 0}}
+                                    />
+                                </label>
+                                <Button
+                                    onClick={() => {
+                                        setRoomSelected(true);
+                                    }}
+                                >
+                                    create room
+                                </Button>
+                            </form>
                         </div>
                         <div className="row justify-content-center">
                             # of users connected: {allUsers.length}
                         </div>
                     </div>
 
-                    
+                    <footer className="mt-5 text-center text-white" style={{bottom: "10%"}}>ChatterBox.io</footer>
+
                 </>
             );
         }
