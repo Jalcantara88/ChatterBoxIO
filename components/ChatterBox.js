@@ -19,6 +19,10 @@ export default function ChatterBox(props) {
   //username: holds the username as a string - instantiate as empty string
    const username = props.username; 
 
+   const [roomSelected, setRoomSelected] = useSate(false);
+
+   const [roomName, setRoomName] = useState("");
+
 
   //message: holds current message being dealt with - instantiate to empty string
   const [message, setMessage] = useState("");
@@ -166,6 +170,19 @@ export default function ChatterBox(props) {
   );
 
  
+        if(!roomSelected) {
+            return(
+                <>
+                    <Button
+                        onClick={() => {
+                            setRoomSelected(true);
+                        }}
+                    >select room</Button>
+                </>
+            );
+        };
+
+        else {
 
             return(
                 <>
@@ -191,7 +208,7 @@ export default function ChatterBox(props) {
                             </div>
                             <div className="col-4">
                                 <Button onClick={() => {
-                                     
+                                     setRoomSelected(false);
                                 }}>
                                     Leave
                                 </Button>
@@ -262,5 +279,7 @@ export default function ChatterBox(props) {
                   </div>
                 </>
               );
+
+        };
 
 }
