@@ -7,6 +7,8 @@ export default function Home() {
 
   const [isUsernameConfirmed, setUsernameConfirmed] = useState(false);
 
+
+
   const [username, setUsername] = useState("");
 
   if(!isUsernameConfirmed) {
@@ -19,6 +21,8 @@ export default function Home() {
       />
     );
   }
+
+
 
   else {
     return(
