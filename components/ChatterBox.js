@@ -76,7 +76,9 @@ export default function ChatterBox(props) {
       //handles message submit taking the message object as an argument in the second parameter
       newSocket.on("message", (msg) => {
         //calls hook to spread current history array and append new message object
-        setHistory((history) => [...history, msg])
+        setHistory((history) => [...history, msg]);
+        console.log("socket is " + socket);
+        console.log("newSocket is " + newSocket);
       });
 
       //handles server disconnect by logging it to console
