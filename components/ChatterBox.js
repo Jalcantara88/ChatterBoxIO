@@ -15,6 +15,8 @@ export default function ChatterBox(props) {
   //socket: holds socket value - instantiate to null value
   const [socket, setSocket] = useState(null);
 
+  const [socketId, setSocketId] = useState("");
+
 
   //username: holds the username as a string - instantiate as empty string
    const username = props.username; 
@@ -57,7 +59,8 @@ export default function ChatterBox(props) {
         newSocket.emit("user-joined", username);
 
         //console.log(newSocket);
-        setSocketId("socket id is: " + newSocket.id);
+        setSocketId(newSocket.id);
+        console.log("socket id is: " + newSocket.id);
         console.log("Chatter Box Connected");
       });
 

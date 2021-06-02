@@ -23,15 +23,15 @@ export default function Login(props) {
               <br/>
               <strong style={{color: "#ff8474"}}>Features</strong>
               <br/>
-              <p className="rounded text-white" style={{backgroundColor: "#5eaaa8"}}>
+              <div className="rounded text-white p-1" style={{backgroundColor: "#ff8474"}}>
                 Usernames
-              </p>
-              <p className="rounded text-white" style={{backgroundColor: "#5eaaa8"}}>
+              </div>
+              <div className="rounded text-white p-1" style={{backgroundColor: "#ff8474"}}>
                 Rooms
-              </p>
-              <p className="rounded text-white" style={{backgroundColor: "#5eaaa8"}}>
+              </div>
+              <div className="rounded text-whitp-1" style={{backgroundColor: "#ff8474"}}>
                 Emojis
-              </p>
+              </div>
               
               All are welcome!
             </p>
@@ -71,7 +71,7 @@ export default function Login(props) {
               <strong style={{color: "#5eaaa8"}}>JULIO ALCANTARA</strong>
               <br/>
               <br/>
-              <strong style={{color: "#ff8474"}}>Challenge</strong>
+              <strong style={{color: "#ff8474"}}>The Challenge</strong>
               <br/>
               Make a Chat Room app using React Next, Express and Socket.IO. Deploy to live site.
               <br/>
