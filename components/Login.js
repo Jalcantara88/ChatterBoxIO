@@ -21,14 +21,18 @@ export default function Login(props) {
               <br/>
               Chat with other users, share ideas, or just observe.
               <br/>
-              <strong style={{backgroundColor: "#ff8474"}}>Features</strong>
+              <strong style={{color: "#ff8474"}}>Features</strong>
               <br/>
-              Usernames
-              <br/>
-              Rooms
-              <br/>
-              Emojis
-              <br/>
+              <p className="rounded text-white" style={{backgroundColor: "#5eaaa8"}}>
+                Usernames
+              </p>
+              <p className="rounded text-white" style={{backgroundColor: "#5eaaa8"}}>
+                Rooms
+              </p>
+              <p className="rounded text-white" style={{backgroundColor: "#5eaaa8"}}>
+                Emojis
+              </p>
+              
               All are welcome!
             </p>
           </div>
@@ -60,17 +64,19 @@ export default function Login(props) {
          
           
           <div className=" col-12 col-md-10 col-lg-6 mx-auto mt-5">
-            <h3 className="text-center rounded-top text-white m-0" style={{backgroundColor: "#5eaaa8"}}>About This Project</h3>
+            <h3 className="text-center rounded-top text-white m-0 py-2" style={{backgroundColor: "#5eaaa8"}}>About This Project</h3>
             <p className="m-0 text-center bg-white text-dark p-3 rounded-bottom">
-              This was a project built for a Mintbean Hackathon: Create A Chat App by me <strong>JULIO ALCANTARA</strong>
+              This was a project built for a Mintbean Hackathon: Create A Chat App by me:
+              <br/>
+              <strong style={{color: "#5eaaa8"}}>JULIO ALCANTARA</strong>
               <br/>
               <br/>
-              <strong style={{backgroundColor: "#ff8474"}}>Challenge</strong>
+              <strong style={{color: "#ff8474"}}>Challenge</strong>
               <br/>
               Make a Chat Room app using React Next, Express and Socket.IO. Deploy to live site.
               <br/>
               <br/>
-              <strong style={{backgroundColor: "#ff8474"}}>My Hurdles</strong>
+              <strong style={{color: "#ff8474"}}>My Hurdles</strong>
               <br/>
               I have never worked with Socket.IO, Express, or set up a server to handle api requests. So for me, this was a very difficult challenge.
               I came accross issues mostly in getting my server hosted on heroku to accept incoming connections. Everything worked locally but not in deployment.
@@ -81,7 +87,7 @@ export default function Login(props) {
   
           </div>
 
-          <div class="container-fluid pt-1" style={{backgroundColor: "#ff8474"}}>
+          <div class="container-fluid pt-1 mt-5" style={{backgroundColor: "#ff8474"}}>
             <p class="text-center m-0 p-3 pb-2 about-font">
               <strong class="text-white">MY PERSONAL LINKS</strong><br/>come check me out at my social accounts and send me some love!
               
