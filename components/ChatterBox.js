@@ -210,12 +210,15 @@ export default function ChatterBox(props) {
                                 </label>
                                 <Button
                                     onClick={() => {
-                                        
+                                        setRoomSelected(true);
                                     }}
                                 >
                                     create room
                                 </Button>
                             </form>
+                        </div>
+                        <div className="row justify-content-center">
+                            <h3>Select a Room or Create a new One</h3>
                         </div>
                         <div className="row justify-content-center">
                             # of users connected: {allUsers.length}
@@ -250,6 +253,9 @@ export default function ChatterBox(props) {
                       <div className="col-10 col-md-8 col-lg-6 col-xl-4 rounded pb-2 px-0 pt-4" style={{backgroundColor: "#ffc996"}}>
                         <div className="row justify-content-center">
                             <div className="col-4">
+                                <h3>
+                                    {roomName}
+                                </h3>
                                 
                             </div>
                             <div className="col-4">
