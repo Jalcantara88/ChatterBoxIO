@@ -102,7 +102,7 @@ export default function ChatterBox(props) {
 
   const renderedUsers = allUsers.map(user => {
       return(
-        <div className="col rounded bg-dark text-white">
+        <div key={user.toString()} className="col-4 rounded bg-dark text-white">
             {user}
         </div>
       );
@@ -150,9 +150,11 @@ export default function ChatterBox(props) {
     setMessage("");
   };
 
+  /*
   const handleRoomSubmit = (e) => {
     setRoomSelected(true);
   }
+  */
 
 
   //handle onchange for form submit - sets current message string to value of input box
@@ -191,7 +193,9 @@ export default function ChatterBox(props) {
                                 <p className="m-0"> Chatting as <strong>{username}</strong> </p>
                         </div>
                         <div className="row justify-content-center my-5">
-                            <form onSubmit={handleRoomSubmit} className=" mx-auto">
+                            <form 
+                            //onSubmit={handleRoomSubmit} 
+                            className=" mx-auto">
                                 
                                 <label htmlFor="message">
                                     <input  
@@ -212,6 +216,7 @@ export default function ChatterBox(props) {
                                     onClick={() => {
                                         setRoomSelected(true);
                                     }}
+                                    className="ml-3 p-1"
                                 >
                                     create room
                                 </Button>
@@ -326,7 +331,10 @@ export default function ChatterBox(props) {
                   <div className="row justify-content-center">
                       Users in Room:
                       <div className="col-10 col-lg-6">
-                          {renderedUsers}
+                            <div className="row justify-content-center">
+                                {renderedUsers}
+                            </div>
+                          
                       </div>    
                   </div>
                 </>
