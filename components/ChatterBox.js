@@ -166,7 +166,7 @@ export default function ChatterBox(props) {
     (
       <div key={i} className="mb-3">
         <strong className=" pl-2 pr-1 py-1" style={{backgroundColor: "#a3d2ca", borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px", color: "#5eaaa8"}}>{username}:</strong>
-        <span className=" text-white pr-2 pl-1 py-1" style={{backgroundColor: " #5eaaa8", borderTopRightRadius: "10px", borderBottomRightRadius: "10px",}}> {message} </span>
+        <span className=" text-white pr-2 pl-1 py-1" style={{backgroundColor: "#5eaaa8", borderTopRightRadius: "10px", borderBottomRightRadius: "10px",}}> {message} </span>
       </div>
     )
   );
@@ -266,18 +266,25 @@ export default function ChatterBox(props) {
                   <div className="container" style={{marginTop: "15%" }}>
                     <div className="row justify-content-center">
                       
-                      <div className="col-10 col-md-8 col-lg-6 col-xl-4 rounded pb-2 px-0 pt-4" style={{backgroundColor: "#ffc996"}}>
+                      <div className="col-10 col-md-8 col-lg-6 col-xl-4 rounded pb-2 px-0 pt-1" style={{backgroundColor: "#ffc996"}}>
                         <div className="row justify-content-center">
-                            <div className="col-4">
-                                <h3>
+                            <div className="col-4 mr-auto">
+                                <h3 className="text-center">
                                     {roomName}
                                 </h3>
                                 
                             </div>
-                            <div className="col-4">
+                            <div className="col-4 ml-auto">
                                 <Button onClick={() => {
-                                     setRoomSelected(false);
-                                }}>
+                                    console.log("left room " + roomName);
+                                    socket.emit("leave-room", roomName);
+                                    setRoomSelected(false);
+                                    setRoomName("");
+                                     
+                                }}
+                                style={{backgroundColor: "#5eaaa8"}}
+                                className="mx-auto"
+                                >
                                     Leave
                                 </Button>
                             </div>
