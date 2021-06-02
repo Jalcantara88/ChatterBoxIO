@@ -14,9 +14,9 @@ export default function Login(props) {
             <meta charSet="UTF-8"></meta>
           </Head>
 
-          <div className=" col-12 col-md-10 col-lg-6 rounded bg-white px-3 py-3 mx-auto mt-5">
-            <h3 className="text-center text-dark rounded-top text-white" style={{backgroundColor: "#ff8474"}}>Welcome to Chatter Box IO</h3>
-            <p className="text-center text-dark">
+          <div className=" col-12 col-md-10 col-lg-6 rounded px-3 pt-3 pb-2 mx-auto mt-5">
+            <h3 className="text-center rounded-top text-white" style={{backgroundColor: "#ff8474"}}>Welcome to Chatter Box IO</h3>
+            <p className="text-center text-dark bg-white">
               Set your username and Connect to Create or Join available Rooms
               <br/>
               Chat with other users, share ideas, or just observe.
@@ -27,7 +27,7 @@ export default function Login(props) {
           </div>
   
           {/*username component passing in props */}
-          <div style={{marginTop: "20%", backgroundColor: "#ff8474"}} className="pt-2">
+          <div style={{backgroundColor: "#ff8474"}} className="pt-2 mt-5">
             <UsernameField
               completed={props.isUsernameConfirmed}
               value={props.username}
@@ -52,9 +52,9 @@ export default function Login(props) {
   
          
           
-          <div className=" col-12 col-md-10 col-lg-6 rounded bg-white px-5 py-3 mx-auto mt-5">
-            <h3 className="text-center text-dark rounded-top text-white" style={{backgroundColor: "#ff8474"}}>About This Project</h3>
-            <p className="m-0 text-center">
+          <div className=" col-12 col-md-10 col-lg-6 rounded px-5 pt-3 pb-2 mx-auto mt-5">
+            <h3 className="text-center rounded-top text-white" style={{backgroundColor: "#ff8474"}}>About This Project</h3>
+            <p className="m-0 text-center bg-white text-dark">
               This was a project built for a Mintbean Hackathon: Create A Chat App
               <br/>
               <br/>
