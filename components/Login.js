@@ -14,9 +14,9 @@ export default function Login(props) {
             <meta charSet="UTF-8"></meta>
           </Head>
 
-          <div className=" col-12 col-md-10 col-lg-6 rounded px-3 pt-3 pb-2 mx-auto mt-5">
-            <h3 className="text-center rounded-top text-white" style={{backgroundColor: "#ff8474"}}>Welcome to Chatter Box IO</h3>
-            <p className="text-center text-dark bg-white">
+          <div className=" col-12 col-md-10 col-lg-6 mx-auto mt-5">
+            <h3 className="text-center rounded-top text-white m-0 py-2" style={{backgroundColor: "#5eaaa8"}}>Welcome to Chatter Box IO</h3>
+            <p className="text-center text-dark bg-white py-3 rounded-bottom">
               Set your username and Connect to Create or Join available Rooms
               <br/>
               Chat with other users, share ideas, or just observe.
@@ -31,9 +31,9 @@ export default function Login(props) {
             <UsernameField
               completed={props.isUsernameConfirmed}
               value={props.username}
-              //roomName={roomName}
+              
               onChange={(value) => {props.setUsername(value); console.log(props.username);}}
-              //onRoomChange={(value) => {setRoomName(value); console.log(roomName);}}
+              
               onSubmit={() => 
                 {
                   if(props.username === "") {
@@ -42,7 +42,7 @@ export default function Login(props) {
                 else {
                     props.setUsername(props.username);
                   props.setUsernameConfirmed(true);
-                  //socket.emit("user-joined", username);
+                  
                 }
               }}
             />
@@ -52,8 +52,8 @@ export default function Login(props) {
   
          
           
-          <div className=" col-12 col-md-10 col-lg-6 rounded px-5 pt-3 pb-2 mx-auto mt-5">
-            <h3 className="text-center rounded-top text-white" style={{backgroundColor: "#ff8474"}}>About This Project</h3>
+          <div className=" col-12 col-md-10 col-lg-6 mx-auto mt-5">
+            <h3 className="text-center rounded-top text-white m-0" style={{backgroundColor: "#5eaaa8"}}>About This Project</h3>
             <p className="m-0 text-center bg-white text-dark">
               This was a project built for a Mintbean Hackathon: Create A Chat App
               <br/>

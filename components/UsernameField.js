@@ -32,21 +32,7 @@ const UsernameField = ({ value, onChange, onSubmit}) => {
                             required
                         />
                     </label>
-                    {/*
-                    <label 
-                        htmlFor="roomName"
-                    >
-                        room name:
-                        <input  
-                            type="text"
-                            name="roomName"
-                            value={roomName}
-                            onChange={
-                                (e) => e.preventDefault() || onRoomChange(e.target.value)
-                            }
-                        />
-                    </label>
-                    */}
+                   
                     <Button 
                         type="submit"
                         className=" my-auto px-2"
