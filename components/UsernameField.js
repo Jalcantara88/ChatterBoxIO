@@ -2,7 +2,7 @@ import {
     Button
   } from 'reactstrap';
 
-const UsernameField = ({ value, onChange, onSubmit, completed, roomName, onRoomChange }) => {
+const UsernameField = ({ value, onChange, onSubmit}) => {
     
     return(
         <div className="container">

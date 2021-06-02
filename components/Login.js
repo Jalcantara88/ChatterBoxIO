@@ -13,6 +13,18 @@ export default function Login(props) {
             <link rel="icon" href="/favicon.ico" />
             <meta charSet="UTF-8"></meta>
           </Head>
+
+          <div className=" col-12 col-md-10 col-lg-6 rounded bg-white px-3 py-3 mx-auto mt-5">
+            <h3 className="text-center text-dark rounded-top text-white" style={{backgroundColor: "#ff8474"}}>Welcome to Chatter Box IO</h3>
+            <p className="text-center text-dark">
+              Set your username and Connect to Create or Join available Rooms
+              <br/>
+              Chat with other users, share ideas, or just observe.
+              <br/>
+              <br/>
+              All are welcome!
+            </p>
+          </div>
   
           {/*username component passing in props */}
           <div style={{marginTop: "20%", backgroundColor: "#ff8474"}} className="pt-2">
@@ -38,21 +50,11 @@ export default function Login(props) {
         
           <footer className="text-center text-white" style={{bottom: "10%", backgroundColor: "#ff8474"}}>ChatterBox.io</footer>
   
-          <div className=" col-12 col-md-10 col-lg-6 rounded bg-white px-5 py-3 mx-auto mt-5">
-            <h3 className="text-center text-dark">Welcome to Chatter Box IO</h3>
-            <p className="text-center text-dark">
-              Set your username and connect to Create or Join available Rooms
-              <br/>
-              Chat with other users, share ideas, or just observe.
-              <br/>
-              <br/>
-              All are welcome!
-            </p>
-          </div>
+         
           
           <div className=" col-12 col-md-10 col-lg-6 rounded bg-white px-5 py-3 mx-auto mt-5">
-            <h3 className="text-center text-dark">About This Project</h3>
-            <p className="m-0">
+            <h3 className="text-center text-dark rounded-top text-white" style={{backgroundColor: "#ff8474"}}>About This Project</h3>
+            <p className="m-0 text-center">
               This was a project built for a Mintbean Hackathon: Create A Chat App
               <br/>
               <br/>
@@ -72,6 +74,26 @@ export default function Login(props) {
             </p>
   
           </div>
+
+          <div class="container-fluid bg-orange pt-1">
+            <p class="text-center text-dark m-0 p-3 pb-2 about-font">
+              <strong class="text-white">MY PERSONAL LINKS</strong><br/>come check me out at my social accounts and send me some love!
+              
+            
+            </p>
+              <div class="row">
+                <div class="col-11 col-sm-8 col-md-6 mx-auto p-0">
+                  
+                  <div class="row justify-content-center pt-0 pb-4 pb-md-5 pb-xl-6">
+                    <a class="col" href='https://www.linkedin.com/in/deadheadstudio/'><img class="social-img" src="/social/linkedin.svg"/></a>
+                    <a class="col" href='https://github.com/Jalcantara88'><img class="social-img" src="/social/github.svg"/></a>
+                    <a class="col" href='https://www.behance.net/DeadHead'><img class="social-img" src="/social/behance.svg" /></a>
+                    <a class="col" href='https://www.instagram.com/bone.head.designer/'><img class="social-img" src="/social/instagram.svg"/></a>
+                    <a class="col" href='https://www.youtube.com/channel/UCzLJQTYgUrhEFAOxt2ek0lg?'><img class="social-img" src="/social/ytube.svg"/></a>
+                  </div>
+                </div>
+              </div>
+            </div>
   
         </div>
       );

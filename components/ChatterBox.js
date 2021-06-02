@@ -57,7 +57,7 @@ export default function ChatterBox(props) {
         newSocket.emit("user-joined", username);
 
         //console.log(newSocket);
-        //setSocketId(newSocket.id);
+        setSocketId("socket id is: " + newSocket.id);
         console.log("Chatter Box Connected");
       });
 
