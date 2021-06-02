@@ -23,15 +23,18 @@ export default function Login(props) {
               <br/>
               <strong style={{color: "#ff8474"}}>Features</strong>
               <br/>
-              <div className="rounded text-white p-1" style={{backgroundColor: "#ff8474"}}>
-                Usernames
+              <div className="row">
+                <div className="col rounded text-white p-1" style={{backgroundColor: "#ff8474"}}>
+                    Usernames
+                </div>
+                <div className="col rounded text-white p-1" style={{backgroundColor: "#ff8474"}}>
+                    Rooms
+                </div>
+                <div className="col rounded text-white p-1" style={{backgroundColor: "#ff8474"}}>
+                    Emojis
+                </div>
               </div>
-              <div className="rounded text-white p-1" style={{backgroundColor: "#ff8474"}}>
-                Rooms
-              </div>
-              <div className="rounded text-whitp-1" style={{backgroundColor: "#ff8474"}}>
-                Emojis
-              </div>
+              
               
               All are welcome!
             </p>

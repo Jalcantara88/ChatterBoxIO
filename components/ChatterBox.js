@@ -153,11 +153,11 @@ export default function ChatterBox(props) {
     setMessage("");
   };
 
-  /*
+ 
   const handleRoomSubmit = (e) => {
     setRoomSelected(true);
   }
-  */
+ 
 
 
   //handle onchange for form submit - sets current message string to value of input box
@@ -195,9 +195,12 @@ export default function ChatterBox(props) {
                         <div className="row justify-content-center text-white" style={{ backgroundColor: "#ff8474"}}>
                                 <p className="m-0"> Chatting as <strong>{username}</strong> </p>
                         </div>
-                        <div className="row justify-content-center my-5">
+                        <div className="row justify-content-center text-white">
+                            <h3>Select a Room or Create a new One</h3>
+                        </div>
+                        <div className="row justify-content-center my-3">
                             <form 
-                            //onSubmit={handleRoomSubmit} 
+                            onSubmit={handleRoomSubmit} 
                             className=" mx-auto">
                                 
                                 <label htmlFor="message">
@@ -213,21 +216,20 @@ export default function ChatterBox(props) {
                                     //disabled={!isUsernameConfirmed}
                                     className="align-middle"
                                     style={{border: 0}}
+                                    required
                                     />
                                 </label>
                                 <Button
-                                    onClick={() => {
-                                        setRoomSelected(true);
-                                    }}
-                                    className="ml-3 p-1"
+                                    
+                                    className="p-1"
+                                    type="submit"
+                                    style={{borderRadius: 0}}
                                 >
                                     create room
                                 </Button>
                             </form>
                         </div>
-                        <div className="row justify-content-center">
-                            <h3>Select a Room or Create a new One</h3>
-                        </div>
+                        
                         <div className="row justify-content-center">
                             # of users connected: {allUsers.length}
                         </div>
