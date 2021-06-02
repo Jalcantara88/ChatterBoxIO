@@ -148,6 +148,7 @@ export default function ChatterBox(props) {
 
   const handleRoomSubmit = (e) => {
     setRoomSelected(true);
+    socket.emit("join-room", roomName);
   }
  
   //handle onchange for form submit - sets current message string to value of input box
@@ -224,7 +225,7 @@ export default function ChatterBox(props) {
                                 <div className="row justify-content-center">
                                     <div 
                                         onClick={() => {
-                                            setRoomName("default");
+                                            setRoomName("DEFAULT");
                                             socket.emit("join-room", roomName);
                                             console.log("joined room " + roomName);
                                             setRoomSelected(true);
