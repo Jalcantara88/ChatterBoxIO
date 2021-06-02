@@ -221,15 +221,15 @@ export default function ChatterBox(props) {
                         <div className="row justify-content-center">
                             <h4 className="text-center">ROOMS:</h4>
                             <div className="col-12 col-md-10 col-lg-8 col-xl-6">
-                                <div className="row">
+                                <div className="row justify-content-center">
                                     <div 
                                         onClick={() => {
                                             setRoomName("default");
-                                            socket.join(roomName);
+                                            socket.emit("join-room", roomName);
                                             console.log("joined room " + roomName);
                                             setRoomSelected(true);
                                         }}
-                                        className="col-4 rounded p-2">
+                                        className="col-4 rounded p-2 bg-primary text-white">
                                             DEFAULT
                                     </div>
                                 </div>
