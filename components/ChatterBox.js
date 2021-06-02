@@ -94,8 +94,7 @@ export default function ChatterBox(props) {
   const goToMessageBottom = () => {
     if(document.getElementById("messageList")) {
       document.getElementById("messageList").scrollTo({
-        top: document.getElementById("messageList").scrollHeight,
-        
+        top: document.getElementById("messageList").scrollHeight, 
         behavior: 'smooth'});
     }
     else {
@@ -111,16 +110,10 @@ export default function ChatterBox(props) {
       );
   });
 
-
-  
-
   //on mount connect your socket
   useEffect(() => {
     connectSocket();
-    //console.log("you are connected to socket: " + socket);
-    //socket.emit("user-joined", username);
   }, []);
-  
 
   //on update of history array, call scroll to bottom function
   useEffect(() => {
@@ -153,13 +146,10 @@ export default function ChatterBox(props) {
     setMessage("");
   };
 
- 
   const handleRoomSubmit = (e) => {
     setRoomSelected(true);
   }
  
-
-
   //handle onchange for form submit - sets current message string to value of input box
   const handleChange = (e) => {
     setMessage(e.target.value);
@@ -180,7 +170,6 @@ export default function ChatterBox(props) {
       </div>
     )
   );
-
  
         if(!roomSelected) {
             return(
@@ -221,13 +210,30 @@ export default function ChatterBox(props) {
                                 </label>
                                 <Button
                                     
-                                    className="p-1"
+                                    className="p-0"
                                     type="submit"
-                                    style={{borderRadius: 0}}
+                                    style={{borderRadius: 0, backgroundColor: "#ff8474"}}
                                 >
                                     create room
                                 </Button>
                             </form>
+                        </div>
+                        <div className="row justify-content-center">
+                            <h4 className="text-center">ROOMS:</h4>
+                            <div className="col-12 col-md-10 col-lg-8 col-xl-6">
+                                <div className="row">
+                                    <div 
+                                        onClick={() => {
+                                            setRoomName("default");
+                                            socket.join(roomName);
+                                            console.log("joined room " + roomName);
+                                            setRoomSelected(true);
+                                        }}
+                                        className="col-4 rounded p-2">
+                                            DEFAULT
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
                         <div className="row justify-content-center">
