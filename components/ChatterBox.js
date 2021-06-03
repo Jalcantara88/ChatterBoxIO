@@ -122,22 +122,26 @@ export default function ChatterBox(props) {
   }, [history]);
 
   //handle submit of message to be handled by action type taking the form event as an arguement
-  const handleSubmit = (e) => {
+  const handleMessageSubmit = (e) => {
 
     //prevent the page from reloading on submit
     e.preventDefault();
     
     //check to see if you have a socket to use to submit to server, if not alert and return
+    /*
     if(!socket) {
       alert("Chatter Box not connected yet. Please try again.");
       return;
     }
+    */
 
+    /*
     //prevent submitting empty object
     if(!message) {
       console.log("empty");
       return;
     }
+    */
 
     //submit message object passing in message and username as object
     socket.emit("message-submitted", { message, username });
@@ -152,7 +156,7 @@ export default function ChatterBox(props) {
   }
  
   //handle onchange for form submit - sets current message string to value of input box
-  const handleChange = (e) => {
+  const handleMessageChange = (e) => {
     setMessage(e.target.value);
     console.log(message);
     console.log(history);
@@ -185,7 +189,7 @@ export default function ChatterBox(props) {
                         <div className="row justify-content-center text-white" style={{ backgroundColor: "#ff8474"}}>
                                 <p className="m-0"> Chatting as <strong>{username}</strong> </p>
                         </div>
-                        <div className="row justify-content-center text-white">
+                        <div className="row justify-content-center text-dark mt-2">
                             <h3>Select a Room or Create a new One</h3>
                         </div>
                         <div className="row justify-content-center my-3">
@@ -211,9 +215,9 @@ export default function ChatterBox(props) {
                                 </label>
                                 <Button
                                     
-                                    className="p-0"
+                                    className="py-0 px-2"
                                     type="submit"
-                                    style={{borderRadius: 0, backgroundColor: "#ff8474"}}
+                                    style={{borderRadius: 0, border: 0, backgroundColor: "#ff8474"}}
                                 >
                                     create room
                                 </Button>
@@ -226,11 +230,12 @@ export default function ChatterBox(props) {
                                     <div 
                                         onClick={() => {
                                             setRoomName("DEFAULT");
+                                            console.log("joined room" + roomName);
                                             socket.emit("join-room", roomName);
-                                            console.log("joined room " + roomName);
+                                            
                                             setRoomSelected(true);
                                         }}
-                                        className="col-4 rounded p-2 bg-primary text-white">
+                                        className="col-4 rounded p-2 bg-primary text-center text-white">
                                             DEFAULT
                                     </div>
                                 </div>
@@ -238,7 +243,9 @@ export default function ChatterBox(props) {
                         </div>
                         
                         <div className="row justify-content-center">
-                            # of users connected: {allUsers.length}
+                            <div className="div rounded p-2 text-white">
+                                # of users connected: {allUsers.length}
+                            </div>
                         </div>
                     </div>
 
@@ -298,10 +305,7 @@ export default function ChatterBox(props) {
                         </div>
                         
                         <div className="row pt-3">
-                        <form onSubmit={handleSubmit} onChange={() => {
-                          
-                        }} className=" mx-auto">
-                            
+                        <form onSubmit={handleMessageSubmit} className=" mx-auto">
                               <label htmlFor="message">
                                 
                                 <input  
@@ -310,21 +314,18 @@ export default function ChatterBox(props) {
                                   name="message"
                                   value={message}
                                   //fires value change
-                                  onChange={handleChange}
+                                  onChange={handleMessageChange}
                                   placeholder={
-                                    //ternary operator to check if username is set yet, if not it asks user to do so
                                     " Chat Here..."
                                   }
-                                  //disables input until username is set
-                                  //disabled={!isUsernameConfirmed}
                                   className="align-middle"
                                   style={{border: 0}}
+                                  required
                                 />
                               </label>
           
                               <Button 
                                 type="submit"  
-                                //disabled={!isUsernameConfirmed}
                                 className="px-3 "
                                 style={{padding: "1px",  backgroundColor: "#ff8474", border: 0, borderRadius: 0}}
                               >
