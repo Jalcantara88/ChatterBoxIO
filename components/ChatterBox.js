@@ -244,6 +244,7 @@ export default function ChatterBox(props) {
         }
 
         else{
+          document.body.appendChild(form);
 
             return(
                 <>
