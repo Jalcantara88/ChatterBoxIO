@@ -244,7 +244,7 @@ export default function ChatterBox(props) {
         }
 
         else{
-          document.body.appendChild(form);
+
 
             return(
                 <>
@@ -281,6 +281,7 @@ export default function ChatterBox(props) {
                                 }}
                                 style={{backgroundColor: "#5eaaa8"}}
                                 className="mx-auto"
+                                type="button"
                                 >
                                     Leave
                                 </Button>
