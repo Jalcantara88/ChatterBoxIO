@@ -128,7 +128,7 @@ export default function ChatterBox(props) {
     e.preventDefault();
 
     //submit message object passing in message and username as object
-    socket.to(roomName).emit("message-submitted", { message });
+    socket.emit("message-submitted", { message, roomName });
 
     //empty message value for next value
     setMessage("");
