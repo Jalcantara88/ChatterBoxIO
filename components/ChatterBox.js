@@ -219,6 +219,7 @@ export default function ChatterBox(props) {
                                         onClick={() => {
                                             setRoomName("DEFAULT");
                                             console.log("joined room" + roomName);
+                                            //console.log(roomName);
                                             socket.emit("join-room", roomName);
                                             
                                             setRoomSelected(true);
