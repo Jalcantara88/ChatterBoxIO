@@ -126,25 +126,9 @@ export default function ChatterBox(props) {
 
     //prevent the page from reloading on submit
     e.preventDefault();
-    
-    //check to see if you have a socket to use to submit to server, if not alert and return
-    /*
-    if(!socket) {
-      alert("Chatter Box not connected yet. Please try again.");
-      return;
-    }
-    */
-
-    /*
-    //prevent submitting empty object
-    if(!message) {
-      console.log("empty");
-      return;
-    }
-    */
 
     //submit message object passing in message and username as object
-    socket.emit("message-submitted", { message, username });
+    socket.to(roomName).emit("message-submitted", { message });
 
     //empty message value for next value
     setMessage("");
@@ -152,6 +136,7 @@ export default function ChatterBox(props) {
 
   const handleRoomSubmit = (e) => {
     setRoomSelected(true);
+    socket.emit("create-room", roomName);
     socket.emit("join-room", roomName);
   }
  
@@ -224,6 +209,9 @@ export default function ChatterBox(props) {
                             </form>
                         </div>
                         <div className="row justify-content-center">
+                            <div className="col-12 col-md-10 col-lg-8 col-xl-6">
+
+                            </div>
                             <h4 className="text-center">ROOMS:</h4>
                             <div className="col-12 col-md-10 col-lg-8 col-xl-6">
                                 <div className="row justify-content-center">
